@@ -1,0 +1,219 @@
+{
+    "plano_escolhido": "Bitix Customer Plano 1",
+    "preco_beneficiarios": [
+        {
+            "nome": "1",
+            "idade": "1",
+            "preco": 9
+        }
+    ],
+    "preco_total": 9,
+    "dados_usuario": {
+        "registro": "reg1",
+        "qtdBeneficiarios": "1",
+        "beneficiarios": [
+            {
+                "nome": "1",
+                "idade": "1"
+            }
+        ]
+    },
+    "0": {
+        "plano_escolhido": "Bitix Customer Plano 1",
+        "preco_beneficiarios": [
+            {
+                "nome": "nome1",
+                "idade": "5",
+                "preco": 9
+            },
+            {
+                "nome": "nome2",
+                "idade": "6",
+                "preco": 9
+            },
+            {
+                "nome": "nome3",
+                "idade": "7",
+                "preco": 9
+            },
+            {
+                "nome": "nome4",
+                "idade": "50",
+                "preco": 14
+            },
+            {
+                "nome": "nome5",
+                "idade": "30",
+                "preco": 11
+            },
+            {
+                "nome": "nome6",
+                "idade": "99",
+                "preco": 14
+            }
+        ],
+        "preco_total": 66,
+        "dados_usuario": {
+            "registro": "reg1",
+            "qtdBeneficiarios": "6",
+            "beneficiarios": [
+                {
+                    "nome": "nome1",
+                    "idade": "5"
+                },
+                {
+                    "nome": "nome2",
+                    "idade": "6"
+                },
+                {
+                    "nome": "nome3",
+                    "idade": "7"
+                },
+                {
+                    "nome": "nome4",
+                    "idade": "50"
+                },
+                {
+                    "nome": "nome5",
+                    "idade": "30"
+                },
+                {
+                    "nome": "nome6",
+                    "idade": "99"
+                }
+            ]
+        }
+    },
+    "1": {
+        "plano_escolhido": "Bitix Customer Plano 2",
+        "preco_beneficiarios": [
+            {
+                "nome": "nome1",
+                "idade": "5",
+                "preco": 20
+            },
+            {
+                "nome": "nome2",
+                "idade": "6",
+                "preco": 20
+            },
+            {
+                "nome": "nome3",
+                "idade": "7",
+                "preco": 20
+            },
+            {
+                "nome": "nome4",
+                "idade": "50",
+                "preco": 40
+            },
+            {
+                "nome": "nome5",
+                "idade": "30",
+                "preco": 30
+            },
+            {
+                "nome": "nome6",
+                "idade": "99",
+                "preco": 40
+            }
+        ],
+        "preco_total": 170,
+        "dados_usuario": {
+            "registro": "reg2",
+            "qtdBeneficiarios": "6",
+            "beneficiarios": [
+                {
+                    "nome": "nome1",
+                    "idade": "5"
+                },
+                {
+                    "nome": "nome2",
+                    "idade": "6"
+                },
+                {
+                    "nome": "nome3",
+                    "idade": "7"
+                },
+                {
+                    "nome": "nome4",
+                    "idade": "50"
+                },
+                {
+                    "nome": "nome5",
+                    "idade": "30"
+                },
+                {
+                    "nome": "nome6",
+                    "idade": "99"
+                }
+            ]
+        }
+    },
+    "2": {
+        "plano_escolhido": "Bitix Customer Plano 1",
+        "preco_beneficiarios": [
+            {
+                "nome": "nome1",
+                "idade": "5",
+                "preco": 9
+            },
+            {
+                "nome": "nome2",
+                "idade": "6",
+                "preco": 9
+            },
+            {
+                "nome": "nome3",
+                "idade": "7",
+                "preco": 9
+            },
+            {
+                "nome": "nome4",
+                "idade": "50",
+                "preco": 14
+            },
+            {
+                "nome": "nome5",
+                "idade": "30",
+                "preco": 11
+            },
+            {
+                "nome": "nome6",
+                "idade": "99",
+                "preco": 14
+            }
+        ],
+        "preco_total": 66,
+        "dados_usuario": {
+            "registro": "reg1",
+            "qtdBeneficiarios": "6",
+            "beneficiarios": [
+                {
+                    "nome": "nome1",
+                    "idade": "5"
+                },
+                {
+                    "nome": "nome2",
+                    "idade": "6"
+                },
+                {
+                    "nome": "nome3",
+                    "idade": "7"
+                },
+                {
+                    "nome": "nome4",
+                    "idade": "50"
+                },
+                {
+                    "nome": "nome5",
+                    "idade": "30"
+                },
+                {
+                    "nome": "nome6",
+                    "idade": "99"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,80 @@
+<!-- historico.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Propostas</title>
+</head>
+
+<body>
+    <h1>Histórico de Propostas</h1>
+    <div id="historico">
+
+    </div>
+
+    <script>
+
+        async function carregarHistorico() {
+            try {
+                const response = await fetch('proposta.json');
+                const propostas = await response.json();
+
+                const historicoList = document.getElementById('historico');
+                historicoList.innerHTML = ''; 
+
+                for (const indice in propostas) {
+                    const proposta = propostas[indice];
+                    const listItem = document.createElement('li');
+
+                    const planoEscolhido = document.createElement('h3');
+                    planoEscolhido.textContent = `Plano Escolhido: ${proposta.plano_escolhido}`;
+                    listItem.appendChild(planoEscolhido);
+
+                    const precoBeneficiarios = document.createElement('p');
+                    precoBeneficiarios.textContent = `Preço dos Beneficiários:`;
+                    const listaBeneficiarios = document.createElement('ul');
+                    for (const beneficiario of proposta.preco_beneficiarios) {
+                        const itemBeneficiario = document.createElement('li');
+                        itemBeneficiario.textContent = `${beneficiario.nome}, ${beneficiario.idade} anos - Preço: ${beneficiario.preco}`;
+                        listaBeneficiarios.appendChild(itemBeneficiario);
+                    }
+                    precoBeneficiarios.appendChild(listaBeneficiarios);
+                    listItem.appendChild(precoBeneficiarios);
+
+                    const precoTotal = document.createElement('p');
+                    precoTotal.textContent = `Preço Total: ${proposta.preco_total}`;
+                    listItem.appendChild(precoTotal);
+
+                    const dadosUsuario = document.createElement('p');
+                    dadosUsuario.textContent = `Dados do Usuário:`;
+                    const listaDadosUsuario = document.createElement('ul');
+                    const itemRegistro = document.createElement('li');
+                    itemRegistro.textContent = `Registro: ${proposta.dados_usuario.registro}`;
+                    listaDadosUsuario.appendChild(itemRegistro);
+                    const itemQtdBeneficiarios = document.createElement('li');
+                    itemQtdBeneficiarios.textContent = `Quantidade de Beneficiários: ${proposta.dados_usuario.qtdBeneficiarios}`;
+                    listaDadosUsuario.appendChild(itemQtdBeneficiarios);
+                    const listaBeneficiariosUsuario = document.createElement('ul');
+                    for (const beneficiario of proposta.dados_usuario.beneficiarios) {
+                        const itemBeneficiarioUsuario = document.createElement('li');
+                        itemBeneficiarioUsuario.textContent = `${beneficiario.nome}, ${beneficiario.idade} anos`;
+                        listaBeneficiariosUsuario.appendChild(itemBeneficiarioUsuario);
+                    }
+                    listaDadosUsuario.appendChild(listaBeneficiariosUsuario);
+                    dadosUsuario.appendChild(listaDadosUsuario);
+                    listItem.appendChild(dadosUsuario);
+
+                    historicoList.appendChild(listItem);
+                }
+            } catch (error) {
+                console.error('Erro ao carregar o histórico:', error);
+            }
+        }
+
+        carregarHistorico();
+    </script>
+</body>
+
+</html>

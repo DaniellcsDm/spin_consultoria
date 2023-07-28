@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Propostas</title>
+    <title>Calcular Preço do Plano</title>
+</head>
+
+<body>
+    <h1>Calcular Preço do Plano</h1>
+    <form id="formCalculo">
+        <label for="registro">Registro do Plano:</label>
+        <input type="text" id="registro" name="registro" required>
+        <br>
+        <label for="qtdBeneficiarios">Quantidade de Beneficiários:</label>
+        <input type="number" id="qtdBeneficiarios" name="qtdBeneficiarios" required>
+        <br>
+        <div id="beneficiarios">
+            <!-- Aqui, os campos para inserir o nome e a idade de cada beneficiário serão adicionados dinamicamente usando JavaScript -->
+        </div>
+        <br>
+        <button type="button" onclick="adicionarBeneficiario()">Adicionar Beneficiário</button>
+        <button type="button" onclick="calcularPrecoPlano()">Calcular Preço</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        // Função para adicionar campos de nome e idade para cada beneficiário
+        // Função para adicionar campos de nome e idade para cada beneficiário
+        function adicionarBeneficiario() {
+            const divBeneficiarios = document.getElementById('beneficiarios');
+            const qtdBeneficiarios = document.getElementById('qtdBeneficiarios').value;
+
+            divBeneficiarios.innerHTML = ''; // Limpar os campos anteriores
+
+            for (let i = 0; i < qtdBeneficiarios; i++) {
+                const inputNome = document.createElement('input');
+                inputNome.type = 'text';
+                inputNome.name = 'beneficiarios[' + i + '][nome]';
+                inputNome.placeholder = 'Nome Beneficiário ' + (i + 1);
+
+                const inputIdade = document.createElement('input');
+                inputIdade.type = 'number';
+                inputIdade.name = 'beneficiarios[' + i + '][idade]';
+                inputIdade.placeholder = 'Idade Beneficiário ' + (i + 1);
+
+                divBeneficiarios.appendChild(inputNome);
+                divBeneficiarios.appendChild(inputIdade);
+                divBeneficiarios.appendChild(document.createElement('br'));
+            }
+        }
+
+
+        // Função para calcular o preço do plano
+        function calcularPrecoPlano() {
+            // try {
+            const formulario = document.getElementById('formCalculo');
+            const dados = new FormData(formulario);
+
+            /* const divResultado = document.getElementById('resultado');
+                      divResultado.innerHTML = JSON.stringify(resultado, null, 2); */
+            fetch('api.php', {
+                method: 'POST',
+                body: dados
+            })
+                .then(response => {
+                    // Verificar se a resposta não é um JSON válido
+                    if (!response.ok) {
+                        throw new Error('Erro na resposta da API.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Exibir os dados no console
+                    console.log(data);
+
+                    // Chame uma função para exibir os dados na página, se desejar
+                    exibirDadosNaPagina(data)
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar o formulário:', error);
+                });
+        }
+
+        function exibirDadosNaPagina(dados) {
+            const divResultado = document.getElementById('resultado');
+            divResultado.innerHTML = ''; // Limpar o conteúdo anterior, se houver
+
+            // Exibir o plano escolhido
+            const planoEscolhido = document.createElement('p');
+            planoEscolhido.textContent = `Plano escolhido: ${dados.plano_escolhido.nome}`;
+            divResultado.appendChild(planoEscolhido);
+
+            // Exibir o preço dos beneficiários
+            if (dados.preco_beneficiarios && dados.preco_beneficiarios.length > 0) {
+                const precoBeneficiarios = document.createElement('p');
+                precoBeneficiarios.textContent = 'Preço dos beneficiários:';
+                divResultado.appendChild(precoBeneficiarios);
+
+                for (const beneficiario of dados.preco_beneficiarios) {
+                    const beneficiarioInfo = document.createElement('p');
+                    beneficiarioInfo.textContent = `Nome: ${beneficiario.nome}, Idade: ${beneficiario.idade}, Preço: ${beneficiario.preco}`;
+                    divResultado.appendChild(beneficiarioInfo);
+                }
+            }
+
+            // Exibir o preço total
+            const precoTotal = document.createElement('p');
+            precoTotal.textContent = `Preço Total: ${dados.preco_total}`;
+            divResultado.appendChild(precoTotal);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
